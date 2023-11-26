@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { Menu, Segment } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
+import { Link, useLocation } from 'react-router-dom';
 
 interface State {
   activeItem: string;
 }
 
-interface MenuItemProps {
-  name: string;
-}
-
 class ProTrackerMenu extends Component<{}, State> {
-  state: State = { activeItem: 'Projects' };
+  state: State = { activeItem: '' };
 
   handleItemClick = (e: any, data: any): void =>
     this.setState({ activeItem: data.name });
@@ -22,18 +19,18 @@ class ProTrackerMenu extends Component<{}, State> {
       <div>
         <Menu pointing secondary>
           <Menu.Item
+            as={Link}
+            to="/projects/all"
             name='Projects'
             active={activeItem === 'Projects'}
             onClick={(e, data) => this.handleItemClick(e, data)}
           />
+
           <Menu.Item
-            name='Employees'
-            active={activeItem === 'Employees'}
-            onClick={(e, data) => this.handleItemClick(e, data)}
-          />
-          <Menu.Item
-            name='Administration'
-            active={activeItem === 'Administration'}
+            as={Link}
+            to="/projects/add"
+            name='AddProject'
+            active={activeItem === 'AddProject'}
             onClick={(e, data) => this.handleItemClick(e, data)}
           />
           <Menu.Menu position='right'>

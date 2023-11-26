@@ -10,7 +10,7 @@ const get = (id: any) => {
 };
 
 const create = (data: IProjectData) => {
-  return http.post<IProjectData>("/posts", data);
+  return http.post<IProjectData>("/api/project/addProject", data);
 };
 
 const update = (id: any, data: IProjectData) => {
